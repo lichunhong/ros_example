@@ -1,0 +1,8 @@
+prefix=/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/install
+
+Name: robot1_gazebo
+Description: Description of robot1_gazebo
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/install/lib 
+Requires: 

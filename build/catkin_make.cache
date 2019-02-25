@@ -1,0 +1,2 @@
+chapter4_tutorials/chapter4_tutorials:chapter4_tutorials/robot1_description:chapter4_tutorials/robot1_gazebo:chapter5_tutorials
+-DCATKIN_DEVEL_PREFIX=/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/install -G Unix Makefiles

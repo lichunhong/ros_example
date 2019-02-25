@@ -1,0 +1,8 @@
+prefix=/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/install
+
+Name: chapter5_tutorials
+Description: Description of chapter5_tutorials
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/install/lib 
+Requires: 
