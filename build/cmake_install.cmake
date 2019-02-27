@@ -119,6 +119,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/gtest/cmake_install.cmake")
   include("/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter4_tutorials/chapter4_tutorials/cmake_install.cmake")
   include("/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter5_tutorials/cmake_install.cmake")
+  include("/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter6_tutorials/cmake_install.cmake")
+  include("/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter2_tutorials/cmake_install.cmake")
   include("/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter4_tutorials/robot1_gazebo/cmake_install.cmake")
   include("/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter4_tutorials/robot1_description/cmake_install.cmake")
 
