@@ -7,5 +7,7 @@
 subdirs(gtest)
 subdirs(chapter4_tutorials/chapter4_tutorials)
 subdirs(chapter5_tutorials)
+subdirs(chapter6_tutorials)
+subdirs(chapter2_tutorials)
 subdirs(chapter4_tutorials/robot1_gazebo)
 subdirs(chapter4_tutorials/robot1_description)
