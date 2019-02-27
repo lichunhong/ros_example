@@ -28,3 +28,18 @@
 	args="-urdf -model robot1 -param robot_description -z 0.05"/> 
 
 </launch>
+
+
+
+<!-- 
+roslaunch robot1_gazebo gazebo.launch   model:=" /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/chapter4_tutorials/robot1_description/urdf/robot1_base_01.xacro"
+
+
+
+roslaunch robot1_gazebo gazebo.launch   model:=" /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/chapter4_tutorials/robot1_description/urdf/robot1_base_02.xacro"
+
+
+
+roslaunch robot1_gazebo gazebo.launch   model:=" /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/chapter4_tutorials/robot1_description/urdf/robot1_base_03.xacro"
+
+-->

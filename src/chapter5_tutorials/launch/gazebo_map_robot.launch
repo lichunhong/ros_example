@@ -37,3 +37,12 @@
 
 </launch>
 
+<!-- 
+
+roslaunch chapter5_tutorials gazebo_map_robot.launch model:=" /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/chapter5_tutorials/urdf/robot1_base_01.xacro"
+
+
+roslaunch chapter5_tutorials gazebo_map_robot.launch model:=" /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/chapter5_tutorials/urdf/robot1_base_04.xacro"
+
+/home/lichunhong  cannot be replace by ~  ?
+ -->

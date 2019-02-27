@@ -12,6 +12,5 @@
 
 
 <!-- 
-roslaunch robot1_description  state_xacro.launch model:=" /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-ma
-ster/catkin_ws/src/chapter4_tutorials/robot1_description/urdf/robot1.xacro"
+roslaunch robot1_description  state_xacro.launch model:=" /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/chapter4_tutorials/robot1_description/urdf/robot1.xacro"
   -->
