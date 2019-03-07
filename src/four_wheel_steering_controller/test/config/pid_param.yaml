@@ -1,0 +1,70 @@
+# gazebo_ros_control:
+#   pid_gains:
+#     front_left_wheel: { p: 40.0, i: 0.01, d: 10.0 }
+#     front_right_wheel: { p: 40.0, i: 0.01, d: 10.0 }
+#     rear_left_wheel: { p: 40.0, i: 0.01, d: 10.0 }
+#     rear_right_wheel: { p: 40.0, i: 0.01, d: 10.0 }
+#     front_left_steering_joint: { p: 40.0, i: 0.01, d: 10.0 }
+#     front_right_steering_joint: { p: 40.0, i: 0.01, d: 1.0 }
+#     rear_left_steering_joint: { p: 40.0, i: 0.01, d: 1.0 }
+#     rear_right_steering_joint: { p: 40.0, i: 0.01, d: 1.0 }
+
+
+gazebo_ros_control:
+  pid_gains:
+    front_left_wheel: 
+      p: 100.0
+      i: 10
+      d: 0
+      i_clamp: 10
+      antiwindup: true
+      publish_state: true
+    front_right_wheel:
+      p: 100.0
+      i: 10
+      d: 0
+      i_clamp: 10
+      antiwindup: true
+      publish_state: true
+    rear_left_wheel: 
+      p: 100.0
+      i: 10
+      d: 0
+      i_clamp: 10
+      antiwindup: true
+      publish_state: true
+    rear_right_wheel:
+      p: 100.0
+      i: 10
+      d: 0
+      i_clamp: 10
+      antiwindup: true
+      publish_state: true
+    front_left_steering_joint: 
+      p: 1000.0
+      i: 10
+      d: 10
+      i_clamp: 0
+      antiwindup: true
+      publish_state: true
+    front_right_steering_joint: 
+      p: 1000.0
+      i: 10
+      d: 10
+      i_clamp: 0
+      antiwindup: true
+      publish_state: true
+    rear_left_steering_joint: 
+      p: 1000.0
+      i: 10
+      d: 10
+      i_clamp: 0
+      antiwindup: true
+      publish_state: true
+    rear_right_steering_joint: 
+      p: 1000.0
+      i: 10
+      d: 10
+      i_clamp: 0
+      antiwindup: true
+      publish_state: true

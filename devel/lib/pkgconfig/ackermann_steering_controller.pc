@@ -1,0 +1,8 @@
+prefix=/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/devel
+
+Name: ackermann_steering_controller
+Description: Description of ackermann_steering_controller
+Version: 0.14.3
+Cflags: -I/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/ackermann_steering_controller/include -I/usr/include
+Libs: -L/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/devel/lib -lackermann_steering_controller /usr/lib/x86_64-linux-gnu/libboost_system.so /usr/lib/x86_64-linux-gnu/libboost_thread.so /usr/lib/x86_64-linux-gnu/libboost_chrono.so /usr/lib/x86_64-linux-gnu/libboost_date_time.so /usr/lib/x86_64-linux-gnu/libboost_atomic.so /usr/lib/x86_64-linux-gnu/libpthread.so
+Requires: controller_interface diff_drive_controller hardware_interface nav_msgs realtime_tools roscpp tf

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>cirkit_unit03_gazebo</name>
+  <version>0.1.0</version>
+  <description>The cirkit_unit03_gazebo package</description>
+
+  <maintainer email="p595201m@mail.kyutech.jp">Masaru Morita</maintainer>
+  <maintainer email="k104073r@mail.kyutech.jp">Ryodo Tanaka</maintainer>
+  <license>BSD</license>
+
+  <url type="repository">https://github.com/CIR-KIT-Unit03/cirkit_unit03_gazebo.git</url>
+  <url type="bugtracker">https://github.com/CIR-KIT-Unit03/cirkit_unit03_gazebo/issues</url>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>roslaunch</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>xacro</exec_depend>
+</package>
