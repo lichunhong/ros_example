@@ -17,6 +17,7 @@
 
 roslaunch robot1_description display.launch  model:=" /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/chapter4_tutorials/robot1_description/urdf/robot1.urdf"
 
+roslaunch robot1_description display.launch  model:=" /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/src/chapter4_tutorials/robot1_description/urdf/robot1.urdf"  gui:=true
 
 /home/lichunhong  cannot be replace by ~  ?
  -->

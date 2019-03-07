@@ -1,0 +1,74 @@
+<launch>
+  <!-- Start gazebo world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+  <!-- OR -->
+  <!-- Start four_wheel_steering -->
+  <!--<node name="four_wheel_steering"
+      pkg="four_wheel_steering_controller"
+      type="four_wheel_steering" output="screen"/>-->
+
+  <!-- load robot -->
+  <param name="robot_description"
+         command="$(find xacro)/xacro --inorder '$(find four_wheel_steering_controller)/test/urdf/four_wheel_steering.urdf.xacro'" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- Load pid config -->
+  <rosparam command="load" file="$(find four_wheel_steering_controller)/test/config/pid_param.yaml" />
+
+
+  <!-- Load controller config -->
+  <rosparam command="load" file="$(find four_wheel_steering_controller)/test/config/four_wheel_steering_controller_4ws_cmd.yaml" />
+    <!--<rosparam command="load" file="$(find four_wheel_steering_controller)/test/config/four_wheel_steering_wrong_config.yaml" />-->
+
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_four_wheel_steering" pkg="gazebo_ros" type="spawn_model"
+        args="-urdf -param robot_description -model four_wheel_steering -z 0.5" respawn="false" output="screen" />
+
+  <!-- Spawn controller -->
+  <node name="controller_spawner"
+        pkg="controller_manager" type="spawner" output="screen"
+        args="robot_joint_publisher 
+        four_wheel_steering_controller
+         --shutdown-timeout 3"/>
+
+        <!--
+        left_front_steering_ctrlr
+        right_front_steering_ctrlr
+        left_rear_steering_ctrlr
+        right_rear_steering_ctrlr
+         left_front_steering_ctrlr
+        right_front_steering_ctrlr
+        left_rear_steering_ctrlr
+        right_rear_steering_ctrlr
+        left_front_axle_ctrlr
+        right_front_axle_ctrlr
+        left_rear_axle_ctrlr
+        right_rear_axle_ctrlr
+        four_wheel_steering_controller
+        -->
+
+
+  <!--<node pkg="joy" type="joy_node" name="joy_node">
+    <param name="dev" value="/dev/input/js0" />
+  </node>-->
+
+  <!--<node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy">
+    <remap from="cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>
+  </node>-->
+
+
+
+
+  <!--<node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard">
+    <remap from="cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>
+  </node>-->
+
+
+  <node pkg="turtlesim" type="turtle_teleop_key" name="turtlesim">
+    <remap from="turtle1/cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>
+  </node>
+
+</launch>
+

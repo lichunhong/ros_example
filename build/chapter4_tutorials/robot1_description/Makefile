@@ -56,6 +56,28 @@ CMAKE_BINARY_DIR = /home/lichunhong/Documents/src/effective_robotics_programming
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -78,15 +100,16 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target test
+test/fast: test
 
-.PHONY : list_install_components/fast
+.PHONY : test/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -109,29 +132,6 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,66 +166,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
-.PHONY : chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_lisp: chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : nav_msgs_generate_messages_lisp
-
-# fast build rule for target.
-nav_msgs_generate_messages_lisp/fast:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
-.PHONY : nav_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
-.PHONY : chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_nodejs: chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : nav_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-nav_msgs_generate_messages_nodejs/fast:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
-.PHONY : nav_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
-.PHONY : chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_eus: chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
-
-.PHONY : nav_msgs_generate_messages_eus
-
-# fast build rule for target.
-nav_msgs_generate_messages_eus/fast:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
-.PHONY : nav_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_py.dir/rule:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
-.PHONY : chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_py: chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
-
-.PHONY : nav_msgs_generate_messages_py
-
-# fast build rule for target.
-nav_msgs_generate_messages_py/fast:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_py.dir/build
-.PHONY : nav_msgs_generate_messages_py/fast
-
-# Convenience name for target.
 chapter4_tutorials/robot1_description/CMakeFiles/robot1_description_xacro_generated_to_devel_space_.dir/rule:
 	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 chapter4_tutorials/robot1_description/CMakeFiles/robot1_description_xacro_generated_to_devel_space_.dir/rule
 .PHONY : chapter4_tutorials/robot1_description/CMakeFiles/robot1_description_xacro_generated_to_devel_space_.dir/rule
@@ -254,21 +194,6 @@ state_publisher_tutorials: chapter4_tutorials/robot1_description/CMakeFiles/stat
 state_publisher_tutorials/fast:
 	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter4_tutorials/robot1_description/CMakeFiles/state_publisher_tutorials.dir/build.make chapter4_tutorials/robot1_description/CMakeFiles/state_publisher_tutorials.dir/build
 .PHONY : state_publisher_tutorials/fast
-
-# Convenience name for target.
-chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
-.PHONY : chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_cpp: chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : nav_msgs_generate_messages_cpp
-
-# fast build rule for target.
-nav_msgs_generate_messages_cpp/fast:
-	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make chapter4_tutorials/robot1_description/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
-.PHONY : nav_msgs_generate_messages_cpp/fast
 
 src/state_publisher.o: src/state_publisher.cpp.o
 
@@ -303,20 +228,15 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... list_install_components"
+	@echo "... install"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... nav_msgs_generate_messages_lisp"
-	@echo "... list_install_components"
-	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... nav_msgs_generate_messages_nodejs"
-	@echo "... nav_msgs_generate_messages_eus"
-	@echo "... install"
-	@echo "... nav_msgs_generate_messages_py"
+	@echo "... test"
 	@echo "... robot1_description_xacro_generated_to_devel_space_"
 	@echo "... state_publisher_tutorials"
-	@echo "... nav_msgs_generate_messages_cpp"
-	@echo "... test"
+	@echo "... install/strip"
+	@echo "... install/local"
 	@echo "... src/state_publisher.o"
 	@echo "... src/state_publisher.i"
 	@echo "... src/state_publisher.s"
