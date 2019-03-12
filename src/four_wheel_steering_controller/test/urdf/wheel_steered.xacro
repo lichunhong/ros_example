@@ -33,7 +33,7 @@
     </link>
 
     <joint name="${wheel_prefix}_steering_joint" type="revolute">
-      <limit lower="${-M_PI/2}" upper="${M_PI/2}" effort="1000.0" velocity="5.0"/>
+      <limit lower="${-M_PI}" upper="${M_PI}" effort="1000.0" velocity="5.0"/>
       <axis xyz="0 0 1"/>
       <parent link="${parent_link}"/>
       <child link="${wheel_prefix}_steering"/>
