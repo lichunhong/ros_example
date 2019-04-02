@@ -420,21 +420,6 @@ namespace four_wheel_steering_controller{
         // rear_left_steering = copysign(M_PI_2, -curr_cmd_twist.ang);
         // rear_right_steering = copysign(M_PI_2, -curr_cmd_twist.ang);
 
-        // double vel_steering_offset = (curr_cmd_twist.ang*wheel_steering_y_offset_)/wheel_radius_;
-        // vel_left_front  = copysign(1.0, curr_cmd_twist.ang)*copysign(1.0, curr_cmd_twist.lin_x) * sqrt((pow(curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track/2,2)
-        //                                                                    +pow(wheel_base_*curr_cmd_twist.ang/2.0,2)))/wheel_radius_
-        //                                                 - vel_steering_offset;
-        // vel_right_front = copysign(1.0, curr_cmd_twist.ang)*copysign(1.0, curr_cmd_twist.lin_x) * sqrt((pow(curr_cmd_twist.lin_x + curr_cmd_twist.ang*steering_track/2,2)
-        //                                                                    +pow(wheel_base_*curr_cmd_twist.ang/2.0,2)))/wheel_radius_
-        //                                                 + vel_steering_offset;
-        // vel_left_rear = copysign(1.0, curr_cmd_twist.ang)*copysign(1.0, curr_cmd_twist.lin_x) * sqrt((pow(curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track/2,2)
-        //                                                                  +pow(wheel_base_*curr_cmd_twist.ang/2.0,2)))/wheel_radius_
-        //                                               - vel_steering_offset;
-        // vel_right_rear = copysign(1.0, curr_cmd_twist.ang)*copysign(1.0, curr_cmd_twist.lin_x) * sqrt((pow(curr_cmd_twist.lin_x + curr_cmd_twist.ang*steering_track/2,2)
-        //                                                                   +pow(wheel_base_*curr_cmd_twist.ang/2.0,2)))/wheel_radius_
-        //                                                + vel_steering_offset;
-
-
         double vel_steering_offset = (curr_cmd_twist.ang*wheel_steering_y_offset_)/wheel_radius_;
         vel_left_front  =  copysign(1.0, curr_cmd_twist.lin_x) * sqrt((pow(curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track/2,2)
                                                                            +pow(wheel_base_*curr_cmd_twist.ang/2.0,2)))/wheel_radius_
@@ -476,11 +461,6 @@ namespace four_wheel_steering_controller{
           front_right_steering -= M_PI ;
           rear_right_steering += M_PI ;
         }
-
-
-
-
-
 
       ROS_INFO_STREAM(     "front_left_steering: " << front_left_steering
                             << " front_right_steering: " << front_right_steering
