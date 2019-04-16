@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Export-Package: chapter3_tutorials;version="0.1.0";uses:="org.ros.inte
+ rnal.message"
+Bundle-SymbolicName: org.ros.rosjava_messages.chapter3_tutorials
+Bundle-Version: 0.1.0
+Bundle-Name: chapter3_tutorials
+Bundle-ManifestVersion: 2
+Bnd-LastModified: 1555385485000
+Import-Package: org.ros.internal.message
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+Created-By: 1.8.0_191 (Oracle Corporation)
+Tool: Bnd-3.4.0.201707252008
+

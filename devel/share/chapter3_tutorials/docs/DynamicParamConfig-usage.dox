@@ -1,0 +1,10 @@
+\subsubsection usage Usage
+\verbatim
+<node name="chapter3_tutorials" pkg="chapter3_tutorials" type="chapter3_tutorials">
+  <param name="bool_param" type="bool" value="True" />
+  <param name="int_param" type="int" value="0" />
+  <param name="double_param" type="double" value="0.0" />
+  <param name="string_param" type="str" value="Foo" />
+</node>
+\endverbatim
+

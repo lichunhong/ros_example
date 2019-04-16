@@ -1,0 +1,8 @@
+prefix=/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/install
+
+Name: chapter3_tutorials
+Description: Description of chapter3_tutorials
+Version: 0.1.0
+Cflags: -I/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/install/include
+Libs: -L/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/install/lib 
+Requires: roscpp message_runtime std_msgs geometry_msgs sensor_msgs visualization_msgs dynamic_reconfigure diagnostic_updater cv_bridge image_transport pcl_conversions interactive_markers
