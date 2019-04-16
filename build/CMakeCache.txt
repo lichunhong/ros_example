@@ -275,6 +275,9 @@ EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 //Empy script
 EMPY_SCRIPT:STRING=/usr/bin/empy
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
+
 //Path to a file.
 FLANN_INCLUDE_DIRS:PATH=/usr/include
 
@@ -692,6 +695,9 @@ controller_manager_msgs_DIR:PATH=/opt/ros/kinetic/share/controller_manager_msgs/
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/kinetic/share/cpp_common/cmake
 
+//The directory containing a CMake configuration file for cv::Mat.
+"cv::Mat_DIR":PATH=cv::Mat_DIR-NOTFOUND
+
 //The directory containing a CMake configuration file for cv_bridge.
 cv_bridge_DIR:PATH=/opt/ros/kinetic/share/cv_bridge/cmake
 
@@ -815,6 +821,9 @@ laser_geometry_DIR:PATH=/opt/ros/kinetic/share/laser_geometry/cmake
 
 //Path to a library.
 lib:FILEPATH=/opt/ros/kinetic/lib/librosconsole_bridge.so
+
+//The directory containing a CMake configuration file for lopencv_core.
+lopencv_core_DIR:PATH=lopencv_core_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for map_server.
 map_server_DIR:PATH=/opt/ros/kinetic/share/map_server/cmake

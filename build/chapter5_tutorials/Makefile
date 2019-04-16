@@ -166,6 +166,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+chapter5_tutorials/CMakeFiles/path_plan_sim.dir/rule:
+	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 chapter5_tutorials/CMakeFiles/path_plan_sim.dir/rule
+.PHONY : chapter5_tutorials/CMakeFiles/path_plan_sim.dir/rule
+
+# Convenience name for target.
+path_plan_sim: chapter5_tutorials/CMakeFiles/path_plan_sim.dir/rule
+
+.PHONY : path_plan_sim
+
+# fast build rule for target.
+path_plan_sim/fast:
+	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter5_tutorials/CMakeFiles/path_plan_sim.dir/build.make chapter5_tutorials/CMakeFiles/path_plan_sim.dir/build
+.PHONY : path_plan_sim/fast
+
+# Convenience name for target.
 chapter5_tutorials/CMakeFiles/base_controller.dir/rule:
 	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 chapter5_tutorials/CMakeFiles/base_controller.dir/rule
 .PHONY : chapter5_tutorials/CMakeFiles/base_controller.dir/rule
@@ -996,6 +1011,33 @@ src/odometry.cpp.s:
 	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter5_tutorials/CMakeFiles/odometry.dir/build.make chapter5_tutorials/CMakeFiles/odometry.dir/src/odometry.cpp.s
 .PHONY : src/odometry.cpp.s
 
+src/path_plan_sim.o: src/path_plan_sim.cpp.o
+
+.PHONY : src/path_plan_sim.o
+
+# target to build an object file
+src/path_plan_sim.cpp.o:
+	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter5_tutorials/CMakeFiles/path_plan_sim.dir/build.make chapter5_tutorials/CMakeFiles/path_plan_sim.dir/src/path_plan_sim.cpp.o
+.PHONY : src/path_plan_sim.cpp.o
+
+src/path_plan_sim.i: src/path_plan_sim.cpp.i
+
+.PHONY : src/path_plan_sim.i
+
+# target to preprocess a source file
+src/path_plan_sim.cpp.i:
+	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter5_tutorials/CMakeFiles/path_plan_sim.dir/build.make chapter5_tutorials/CMakeFiles/path_plan_sim.dir/src/path_plan_sim.cpp.i
+.PHONY : src/path_plan_sim.cpp.i
+
+src/path_plan_sim.s: src/path_plan_sim.cpp.s
+
+.PHONY : src/path_plan_sim.s
+
+# target to generate assembly for a file
+src/path_plan_sim.cpp.s:
+	cd /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build && $(MAKE) -f chapter5_tutorials/CMakeFiles/path_plan_sim.dir/build.make chapter5_tutorials/CMakeFiles/path_plan_sim.dir/src/path_plan_sim.cpp.s
+.PHONY : src/path_plan_sim.cpp.s
+
 src/tf_broadcaster.o: src/tf_broadcaster.cpp.o
 
 .PHONY : src/tf_broadcaster.o
@@ -1058,6 +1100,7 @@ help:
 	@echo "... depend"
 	@echo "... install/local"
 	@echo "... install/strip"
+	@echo "... path_plan_sim"
 	@echo "... base_controller"
 	@echo "... odometry"
 	@echo "... tf2_msgs_generate_messages_nodejs"
@@ -1122,6 +1165,9 @@ help:
 	@echo "... src/odometry.o"
 	@echo "... src/odometry.i"
 	@echo "... src/odometry.s"
+	@echo "... src/path_plan_sim.o"
+	@echo "... src/path_plan_sim.i"
+	@echo "... src/path_plan_sim.s"
 	@echo "... src/tf_broadcaster.o"
 	@echo "... src/tf_broadcaster.i"
 	@echo "... src/tf_broadcaster.s"

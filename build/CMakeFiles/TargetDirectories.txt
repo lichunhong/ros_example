@@ -91,6 +91,7 @@
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/cirkit_unit03_gazebo/CMakeFiles/run_tests_cirkit_unit03_gazebo_roslaunch-check_test_description.gazebo_launch.test.xml.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter5_tutorials/CMakeFiles/install/local.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter5_tutorials/CMakeFiles/install/strip.dir
+/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter5_tutorials/CMakeFiles/path_plan_sim.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter5_tutorials/CMakeFiles/base_controller.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter5_tutorials/CMakeFiles/odometry.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter5_tutorials/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir

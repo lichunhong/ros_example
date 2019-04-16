@@ -439,6 +439,19 @@ run_tests_cirkit_unit03_gazebo_roslaunch-check_test_description.gazebo_launch.te
 .PHONY : run_tests_cirkit_unit03_gazebo_roslaunch-check_test_description.gazebo_launch.test.xml/fast
 
 #=============================================================================
+# Target rules for targets named path_plan_sim
+
+# Build rule for target.
+path_plan_sim: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 path_plan_sim
+.PHONY : path_plan_sim
+
+# fast build rule for target.
+path_plan_sim/fast:
+	$(MAKE) -f chapter5_tutorials/CMakeFiles/path_plan_sim.dir/build.make chapter5_tutorials/CMakeFiles/path_plan_sim.dir/build
+.PHONY : path_plan_sim/fast
+
+#=============================================================================
 # Target rules for targets named base_controller
 
 # Build rule for target.
@@ -3345,6 +3358,7 @@ help:
 	@echo "... _run_tests_cirkit_unit03_gazebo_roslaunch-check_test_cirkit_unit03_world_launch.test.xml"
 	@echo "... _run_tests_cirkit_unit03_gazebo_roslaunch-check"
 	@echo "... run_tests_cirkit_unit03_gazebo_roslaunch-check_test_description.gazebo_launch.test.xml"
+	@echo "... path_plan_sim"
 	@echo "... base_controller"
 	@echo "... odometry"
 	@echo "... tf2_msgs_generate_messages_nodejs"
