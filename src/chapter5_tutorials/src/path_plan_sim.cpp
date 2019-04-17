@@ -1,50 +1,75 @@
-#include <ros/ros.h>
 #include <geometry_msgs/PointStamped.h>
-#include <tf/transform_listener.h>
 #include <opencv2/opencv.hpp>
-#include<opencv2/core/core.hpp>
-#include<opencv2/highgui/highgui.hpp>
-#include<opencv2/imgproc/imgproc.hpp>
+#include <ros/ros.h>
+#include <tf/transform_listener.h>
+// #include<opencv2/core/core.hpp>
+// #include<opencv2/highgui/highgui.hpp>
+// #include<opencv2/imgproc/imgproc.hpp>
+#include "std_msgs/String.h"
+#include <boost/thread.hpp>
+#include <nav_msgs/OccupancyGrid.h>
+#include <sstream>
+// /**
+//  * This tutorial demonstrates simple receipt of messages over the ROS system.
+//  */
+// void chatterCallback(const std_msgs::String::ConstPtr& msg)
+// {
+//   ROS_INFO("I heard: [%s]", msg->data.c_str());
+// }
 
-void transformPoint(const tf::TransformListener& listener){
-  //we'll create a point in the base_laser frame that we'd like to transform to the base_link frame
+// int main(int argc, char **argv)
+// {
 
-  geometry_msgs::PointStamped laser_point;
-  laser_point.header.frame_id = "base_laser";
+//   ros::init(argc, argv, "listener");
+//   ros::NodeHandle n;
+//   ros::Subscriber sub = n.subscribe("chatter", 1000, chatterCallback);
+//   ros::spin();
 
-  //we'll just use the most recent transform available for our simple example
-  laser_point.header.stamp = ros::Time();
+//   return 0;
+// }
 
-  //just an arbitrary point in space
-  laser_point.point.x = 1.0;
-  laser_point.point.y = 2.0;
-  laser_point.point.z = 0.0;
-
-  geometry_msgs::PointStamped base_point;
- 
-
-  //listener.waitForTransform(
-
-  listener.transformPoint("base_link", laser_point, base_point);
+void callback1(const nav_msgs::OccupancyGrid &map) {
+  ROS_INFO("callback1 heard map : [%d]", map.info.width);
 
 
-//  listener.lookupTransform("base_link", "wheel_2", ros::Time(0), ros::Duration(10.0));
-  ROS_INFO("base_laser: (%.2f, %.2f. %.2f) -----> base_link: (%.2f, %.2f, %.2f) at time %.2f",
-        laser_point.point.x, laser_point.point.y, laser_point.point.z,
-        base_point.point.x, base_point.point.y, base_point.point.z, base_point.header.stamp.toSec());
 
+
+  ros::Rate loop_rate(1); // block chatterCallback2() 1Hz
+  loop_rate.sleep();
 }
 
-int main(int argc, char** argv){
-  ros::init(argc, argv, "robot_tf_listener");
-  ros::NodeHandle n;
-  cv::Mat data;
+void callback2(const geometry_msgs::PoseStamped &pose) {
+  ROS_INFO("callback2 heard pose");
+  // pose.pose.orientation
+  ros::Rate loop_rate(1); // block chatterCallback2() 1Hz
+  loop_rate.sleep();
+}
 
-  tf::TransformListener listener(ros::Duration(10));
+int main(int argc, char **argv) {
+  // Initiate ROS
+  ros::init(argc, argv, "subscribe_two_topics");
+  ros::NodeHandle n_;
+  // use the latest 1 message
+  ros::Subscriber sub_ = n_.subscribe("realtime_cost_map", 1, &callback1);
+  ros::Subscriber sub2_ =
+      n_.subscribe("segmatch/localization_avg", 1, &callback2);
+  ros::Publisher cmd_vel_pub =
+      n_.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
 
-  //we'll transform a point once every second
-  ros::Timer timer = n.createTimer(ros::Duration(1.0), boost::bind(&transformPoint, boost::ref(listener)));
+  // ros::MultiThreadedSpinner spinner(3);  //多线程
+  // ros::spin(spinner);
+  ros::AsyncSpinner spinner(3); // Use 3 threads
+  spinner.start();
 
-  ros::spin();
+  ros::Rate loop_rate(1);
+  while (ros::ok()) {
+    ROS_INFO("Ros ok in main");
 
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
+
+  ros::waitForShutdown();
+  ROS_INFO("ros finish");
+  return 0;
 }

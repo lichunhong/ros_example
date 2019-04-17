@@ -19,6 +19,8 @@ chapter5_tutorials/CMakeFiles/path_plan_sim.dir/src/path_plan_sim.cpp.o
  /opt/ros/kinetic/include/geometry_msgs/TwistStamped.h
  /opt/ros/kinetic/include/geometry_msgs/Vector3.h
  /opt/ros/kinetic/include/geometry_msgs/Vector3Stamped.h
+ /opt/ros/kinetic/include/nav_msgs/MapMetaData.h
+ /opt/ros/kinetic/include/nav_msgs/OccupancyGrid.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/calib3d.hpp
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/calib3d/calib3d_c.h
@@ -26,7 +28,6 @@ chapter5_tutorials/CMakeFiles/path_plan_sim.dir/src/path_plan_sim.cpp.o
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/core/affine.hpp
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/core/base.hpp
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/core/bufferpool.hpp
- /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/core/core.hpp
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/core/core_c.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/core/cuda.hpp
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/core/cuda.inl.hpp
@@ -88,12 +89,10 @@ chapter5_tutorials/CMakeFiles/path_plan_sim.dir/src/path_plan_sim.cpp.o
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/flann/saving.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/flann/timer.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/highgui.hpp
- /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/highgui/highgui.hpp
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/highgui/highgui_c.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/imgcodecs.hpp
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/imgcodecs/imgcodecs_c.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/imgproc.hpp
- /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/imgproc/imgproc.hpp
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/imgproc/imgproc_c.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/imgproc/types_c.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/ml.hpp
@@ -214,6 +213,7 @@ chapter5_tutorials/CMakeFiles/path_plan_sim.dir/src/path_plan_sim.cpp.o
  /opt/ros/kinetic/include/sensor_msgs/PointCloud.h
  /opt/ros/kinetic/include/std_msgs/Empty.h
  /opt/ros/kinetic/include/std_msgs/Header.h
+ /opt/ros/kinetic/include/std_msgs/String.h
  /opt/ros/kinetic/include/tf/FrameGraph.h
  /opt/ros/kinetic/include/tf/FrameGraphRequest.h
  /opt/ros/kinetic/include/tf/FrameGraphResponse.h
