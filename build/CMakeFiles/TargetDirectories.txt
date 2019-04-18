@@ -160,6 +160,14 @@
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter6_tutorials/CMakeFiles/move_base_msgs_generate_messages_eus.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter6_tutorials/CMakeFiles/test.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter6_tutorials/CMakeFiles/edit_cache.dir
+/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/pathPlan/CMakeFiles/list_install_components.dir
+/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/pathPlan/CMakeFiles/install.dir
+/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/pathPlan/CMakeFiles/rebuild_cache.dir
+/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/pathPlan/CMakeFiles/edit_cache.dir
+/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/pathPlan/CMakeFiles/path_plan_simulation.dir
+/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/pathPlan/CMakeFiles/install/strip.dir
+/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/pathPlan/CMakeFiles/install/local.dir
+/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/pathPlan/CMakeFiles/test.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter2_tutorials/CMakeFiles/install.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter2_tutorials/CMakeFiles/rebuild_cache.dir
 /home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/build/chapter2_tutorials/CMakeFiles/install/local.dir

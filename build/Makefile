@@ -1180,6 +1180,19 @@ move_base_msgs_generate_messages_eus/fast:
 .PHONY : move_base_msgs_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named path_plan_simulation
+
+# Build rule for target.
+path_plan_simulation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 path_plan_simulation
+.PHONY : path_plan_simulation
+
+# fast build rule for target.
+path_plan_simulation/fast:
+	$(MAKE) -f pathPlan/CMakeFiles/path_plan_simulation.dir/build.make pathPlan/CMakeFiles/path_plan_simulation.dir/build
+.PHONY : path_plan_simulation/fast
+
+#=============================================================================
 # Target rules for targets named example4
 
 # Build rule for target.
@@ -3415,6 +3428,7 @@ help:
 	@echo "... sendGoals"
 	@echo "... move_base_msgs_generate_messages_cpp"
 	@echo "... move_base_msgs_generate_messages_eus"
+	@echo "... path_plan_simulation"
 	@echo "... example4"
 	@echo "... example3_a"
 	@echo "... chapter2_tutorials_genpy"

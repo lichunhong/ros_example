@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
+
 project(chapter5_tutorials)
 
-
+SET(CMAKE_CXX_FLAGS "-std=c++11 -O3")
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
@@ -16,9 +17,17 @@ find_package(catkin REQUIRED COMPONENTS
 
 catkin_package()
 
-include_directories(
-  ${catkin_INCLUDE_DIRS}
+# include_directories(
+#   ${catkin_INCLUDE_DIRS}
+# )
+link_directories(
+  lib ${catkin_LIB_DIRS} 
 )
+include_directories(
+  include  ${catkin_INCLUDE_DIRS}  
+)
+
+
 
 add_executable(tf_broadcast src/tf_broadcaster.cpp)
 target_link_libraries(tf_broadcast ${catkin_LIBRARIES})
@@ -38,3 +47,6 @@ target_link_libraries(base_controller ${catkin_LIBRARIES})
 
 add_executable(path_plan_sim src/path_plan_sim.cpp)
 target_link_libraries(path_plan_sim ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
+
+target_link_libraries(path_plan_sim 	${catkin_LIBRARIES}	pathplan)

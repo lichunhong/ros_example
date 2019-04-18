@@ -1,0 +1,8 @@
+prefix=/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/devel
+
+Name: path_plan
+Description: Description of path_plan
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/lichunhong/Documents/src/effective_robotics_programming_with_ros-master/catkin_ws/devel/lib 
+Requires: 
