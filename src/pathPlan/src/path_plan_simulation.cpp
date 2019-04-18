@@ -29,12 +29,21 @@ const std::string rotate_img_path = "./2222.png";
 const std::string ref_traj_path = "./src/pathPlan/bag/refTraj.txt";
 // %time,field.header.seq,field.header.stamp,field.header.frame_id,field.pose.position.x,field.pose.position.y,field.pose.position.z,field.pose.orientation.x,field.pose.orientation.y,field.pose.orientation.z,field.pose.orientation.w
 
-vector<Eigen::Vector2f> ref_path;
+vector<Eigen::Vector2f> m_global_ref_trajectory;
 cv::Mat obstacle_map;
-int int first_step_seq, cur_step_seq;
+int first_step_seq, cur_step_seq;
 float last_theta, cur_theta; //上次车辆转角 和 当前转角  callback2调用
 //上次车的位置 和 当前车的位置  callback2调用
 float last_pos_x, cur_pos_x, last_pos_y, cur_pos_y;
+
+// path plan parameter
+ninebot_algo::motion_planner::IMotionPlanner *planner;
+ninebot_algo::motion_planner::AprIndoorPlanner *m_indoor_planner;
+ninebot_algo::motion_planner::LocalPlanDwa *m_local_planner;
+ninebot_algo::motion_planner::PathPlanThetaStar *m_path_planner;
+Eigen::Vector3f cur_pose;
+Eigen::Vector2f cur_vel;
+Eigen::Vector2f motion_command;
 
 bool readFile2Vector(std::string filename, vector<Eigen::Vector2f> &path) {
   fstream file;
@@ -47,7 +56,7 @@ bool readFile2Vector(std::string filename, vector<Eigen::Vector2f> &path) {
     while (getline(file, str, '\n')) {
       vector<float> data = str2Vector(str);
       if (first_line_flag) {
-        first_step_seq  = data[1];
+        first_step_seq = data[1];
         first_line_flag = false;
       }
       // put xy in vector
@@ -62,34 +71,34 @@ bool readFile2Vector(std::string filename, vector<Eigen::Vector2f> &path) {
   }
 }
 
-// function to draw the occupancy grid to an image
+// // function to draw the occupancy grid to an image
+// cv::Mat draw_grid(const nav_msgs::OccupancyGrid &grid) {
+//   cv::Mat map_img = cv::Mat::zeros(60, 60, CV_32FC1);
+//   // cv::Mat map_img = cv::Mat::zeros(60, 60, CV_8UC1);
+//   for (int i = 220; i < 280; i++) {
+//     uchar *rowi = map_img.ptr<uchar>(i - 220);
+//     for (int j = 220; j < 280; j++) {
+//       rowi[j - 220] = grid.data[i + j * 500];
+//       // map_img.at<double>(i,j) = 0;
+//     }
+//     cv::imwrite(img_path, map_img);
+//   }
+//   return map_img;
+// }
+
 cv::Mat draw_grid(const nav_msgs::OccupancyGrid &grid) {
-  cv::Mat map_img = cv::Mat::zeros(60, 60, CV_8UC1);
-  for (int i = 220; i < 280; i++) {
-    uchar *rowi = map_img.ptr<uchar>(i - 220);
-    for (int j = 220; j < 280; j++) {
-      rowi[j - 220] = grid.data[i + j * 500];
+  cv::Mat map_img = cv::Mat::zeros(120, 120, CV_32FC1);
+  // cv::Mat map_img = cv::Mat::zeros(60, 60, CV_8UC1);
+  for (int i = 190; i < 310; i++) {
+    uchar *rowi = map_img.ptr<uchar>(i - 190);
+    for (int j = 190; j < 310; j++) {
+      rowi[j - 190] = grid.data[i + j * 500];
       // map_img.at<double>(i,j) = 0;
     }
     cv::imwrite(img_path, map_img);
   }
   return map_img;
 }
-// //图像矩阵旋转180°
-// void rotateImage(cv::Mat &src, cv::Mat &dst) {
-//   cv::Size src_sz = src.size();
-//   cv::Size dst_sz(src_sz.height, src_sz.width);
-//   dst = cv::Mat::zeros(dst_sz, CV_8UC1);
-//   int len = std::max(src.cols, src.rows);
-//   //指定旋转中心
-//   cv::Point2f center(len / 2., len / 2.);
-//   //获取旋转矩阵（2x3矩阵）
-//   cv::Mat rot_mat = cv::getRotationMatrix2D(center, 180, 1.0);
-//   //根据旋转矩阵进行仿射变换
-//   cv::warpAffine(src, dst, rot_mat, dst_sz);
-//   cv::imwrite(rotate_img_path, dst);
-//   ROS_INFO("draw rotate_img");
-// }
 
 void callback1(const nav_msgs::OccupancyGrid &map) {
   ROS_INFO("callback1 heard map : [%d]", map.info.width);
@@ -97,7 +106,7 @@ void callback1(const nav_msgs::OccupancyGrid &map) {
   cv::Mat origin_obstacle_map = draw_grid(map);
   // rotateImage(origin_obstacle_map, obstacle_map);
   obstacle_map = imRotate(origin_obstacle_map, 90);
-  ros::Rate loop_rate(1); // block chatterCallback2() 1Hz
+  ros::Rate loop_rate(10); // block chatterCallback2() 1Hz
   loop_rate.sleep();
 }
 
@@ -123,13 +132,48 @@ void callback2(const geometry_msgs::PoseStamped &pose) {
   last_pos_y = cur_pos_y;
   cur_pos_y = pose.pose.position.y;
 
-  ros::Rate loop_rate(1); // block chatterCallback2() 1Hz
+  ros::Rate loop_rate(10); // block chatterCallback2() 1Hz
   loop_rate.sleep();
 }
 
+void initPlaner() {
+  planner = new AprIndoorPlanner("theta_star", "dwa", "none",
+                                 (ninebot_algo::motion_planner::TypeRobot)3);
+  m_indoor_planner = dynamic_cast<AprIndoorPlanner *>(planner);
+  // local_map_range << 3.0f, 3.0f;
+  m_indoor_planner->setReferenceTrajectory(m_global_ref_trajectory);
+
+  m_local_planner = m_indoor_planner->getLocalPlannerInstance();
+  m_path_planner = m_indoor_planner->getPathPlannerInstance();
+
+  dynamic_cast<AprIndoorPlanner *>(planner)->setPlannerParams(
+      "./src/pathPlan/cfg/config.json");
+}
+
 void pathPlan() {
-  ninebot_algo::motion_planner::AprIndoorPlanner *m_p_apr_indoor_planner;
-  ninebot_algo::motion_planner::LocalPlanDwa *m_p_apr_local_planner;
+  // cv::Mat rev_map_raw = dynamic_cast<ObstacleGridMap *>(local_map)->map;
+  // cv::Mat rev_map;
+  // cv::flip(rev_map_raw, rev_map, 0);
+
+  if (obstacle_map.empty()) {
+    obstacle_map = cv::Mat::zeros(120, 120, CV_32FC1);
+  }
+  ObstacleGridMap map_for_planner;
+  map_for_planner.setMap(obstacle_map);
+
+  // makePlan
+  float delta_time = 0.1; // 10hz 间隔0.1s
+  cur_pose << cur_pos_x, cur_pos_y, cur_theta;
+
+  cur_vel[0] = std::sqrt(std::pow(cur_pos_x - last_pos_x, 2) +
+                         std::pow(cur_pos_y - last_pos_y, 2)) /
+               delta_time;
+  cur_vel[1] = (cur_theta - last_theta) / delta_time;
+
+  planner->makePlan(cur_pose, cur_vel, map_for_planner);
+  motion_command = planner->getOptimalControlCmd();
+
+  // dis
 }
 
 int main(int argc, char **argv) {
@@ -138,9 +182,10 @@ int main(int argc, char **argv) {
   ros::NodeHandle n_;
 
   // read ref trajectry
-  bool state = readFile2Vector(ref_traj_path, ref_path);
+  bool state = readFile2Vector(ref_traj_path, m_global_ref_trajectory);
   cout << "state = " << state << endl;
-  ROS_INFO("ref_path size = [%d] ", (int)ref_path.size());
+  ROS_INFO("m_global_ref_trajectory size = [%d] ",
+           (int)m_global_ref_trajectory.size());
 
   // use the latest 1 message
   ros::Subscriber sub_ = n_.subscribe("/realtime_cost_map", 1, &callback1);
@@ -158,6 +203,9 @@ int main(int argc, char **argv) {
   while (ros::ok()) {
     ROS_INFO("Ros ok in main");
 
+    if (planner == nullptr) {
+      initPlaner();
+    }
     pathPlan();
 
     ros::spinOnce();
